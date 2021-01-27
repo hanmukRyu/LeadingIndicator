@@ -1,0 +1,31 @@
+[
+    {
+        "target": "Swift 학습",
+        "targetValue": 100,
+        "dueDate": "20210331",
+        "currentValue": 10,
+        "currentDate": "20210325"
+
+    },
+    {
+        "target": "Figma 학습",
+        "targetValue": 100,
+        "dueDate": "20210331",
+        "currentValue": 75,
+        "currentDate": "20210325"
+    },
+    {
+        "target": "UX 학습",
+        "targetValue": 100,
+        "dueDate": "20210331",
+        "currentValue": 40,
+        "currentDate": "20210325"
+    },
+    {
+        "target": "스케치",
+        "targetValue": 100,
+        "dueDate": "20210331",
+        "currentValue": 20,
+        "currentDate": "20210325"
+    }
+]
