@@ -15,7 +15,7 @@ struct LeadingIndicator: View {
     var body: some View {
         let progressInPercent = String(round(self.actualProgress * 100)) + "%"
         
-        VStack(alignment: .leading, spacing: 1) {
+        VStack(alignment: .leading, spacing: 0) {
             HStack {
                 
                 Text("").frame(width: 100)
@@ -42,10 +42,7 @@ struct LeadingIndicator: View {
 struct LeadingIndicator_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LeadingIndicator(actualProgress: 0.5, plannedProgress: 0.3, purpose: "Swift")
-            ProgressView(value: /*@START_MENU_TOKEN@*/0.5/*@END_MENU_TOKEN@*/)
-                .padding()
-            ProgressView(value: 0.2)
+            LeadingIndicator(actualProgress: 0.3, plannedProgress: 0.8, purpose: "Swift")
         }
     }
 }

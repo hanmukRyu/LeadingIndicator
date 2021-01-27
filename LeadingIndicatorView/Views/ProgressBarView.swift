@@ -36,7 +36,7 @@ import SwiftUI
 
 struct ProgressBarView: View {
     private(set) var actualProgress: Float
-    private(set) var plannedProgress: Float = 0.8
+    private(set) var plannedProgress: Float = 0.5
     
     var body: some View {
         ZStack {
@@ -45,35 +45,13 @@ struct ProgressBarView: View {
                 .opacity(0.5)
 
             ProgressView(value: self.actualProgress)
-                .foregroundColor(.yellow)
         }
     }    
-}
-
-struct ShadowedProgressViews: View {
-    var body: some View {
-        VStack {
-            ProgressView(value: 0.25)
-            ProgressView(value: 0.75)
-        }
-        .progressViewStyle(DarkBlueShadowProgressViewStyle())
-    }
-}
-
-struct DarkBlueShadowProgressViewStyle: ProgressViewStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        ProgressView(configuration)
-            .shadow(color: Color(red: 0, green: 0, blue: 0.6),
-                    radius: 4.0, x: 1.0, y: 2.0)
-    }
 }
 
 struct ProgressBarView_Previews: PreviewProvider {
     static var previews: some View {
         ProgressBarView(actualProgress: 0.4)
-            .progressViewStyle(LinearProgressViewStyle())
-        ProgressBarView(actualProgress: 0.4)
-        ShadowedProgressViews()
     }
 }
 
