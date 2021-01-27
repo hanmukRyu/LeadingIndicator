@@ -11,10 +11,8 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             ModalView()
-                .background(Color("backgroundColor"))
             LeadingIndicatorList()
-                .frame(width: 300, height: 20)
-                .padding()
+                .padding(30)
         }
     }
 }

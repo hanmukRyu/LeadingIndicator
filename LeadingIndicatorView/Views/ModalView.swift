@@ -13,6 +13,7 @@ struct ModalView: View {
         RoundedRectangle(cornerRadius: radius)
             .padding()
             .foregroundColor(Color("cardColor"))
+            .ignoresSafeArea()
     }
 }
 

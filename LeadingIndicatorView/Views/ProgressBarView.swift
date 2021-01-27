@@ -7,28 +7,73 @@
 
 import SwiftUI
 
+//struct ProgressBarView: View {
+//    let height: CGFloat = 20.0
+//    let radius: CGFloat = 45.0
+//    private(set) var actualProgress: Float
+//    private(set) var plannedProgress: Float
+//
+//    var body: some View {
+//        GeometryReader { geometry in
+//            ZStack(alignment: .leading) {
+//                Rectangle()
+//                    .frame(width: geometry.size.width)
+//                    .foregroundColor(.white)
+//                Rectangle()
+//                    .frame(width: min(CGFloat(self.plannedProgress)*geometry.size.width, geometry.size.width))
+//                    .foregroundColor(.red)
+//                    .opacity(0.5)
+//                Rectangle()
+//                    .frame(width: min(CGFloat(self.actualProgress)*geometry.size.width, geometry.size.width))
+//                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+//            }
+//        }
+//        .cornerRadius(radius)
+//        .frame(height: height)
+//    }
+//}
+
+
 struct ProgressBarView: View {
-    let height: CGFloat = 20.0
-    let radius: CGFloat = 45.0
     private(set) var actualProgress: Float
-    private(set) var plannedProgress: Float
+    private(set) var plannedProgress: Float = 0.8
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .frame(width: geometry.size.width)
-                    .foregroundColor(.white)
-                Rectangle()
-                    .frame(width: min(CGFloat(self.plannedProgress)*geometry.size.width, geometry.size.width))
-                    .foregroundColor(.red)
-                    .opacity(0.5)
-                Rectangle()
-                    .frame(width: min(CGFloat(self.actualProgress)*geometry.size.width, geometry.size.width))
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-            }
+        ZStack {
+            ProgressView(value: self.plannedProgress)
+                .accentColor(.white)
+                .opacity(0.5)
+
+            ProgressView(value: self.actualProgress)
+                .foregroundColor(.yellow)
         }
-        .cornerRadius(radius)
-        .frame(height: height)
+    }    
+}
+
+struct ShadowedProgressViews: View {
+    var body: some View {
+        VStack {
+            ProgressView(value: 0.25)
+            ProgressView(value: 0.75)
+        }
+        .progressViewStyle(DarkBlueShadowProgressViewStyle())
     }
 }
+
+struct DarkBlueShadowProgressViewStyle: ProgressViewStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        ProgressView(configuration)
+            .shadow(color: Color(red: 0, green: 0, blue: 0.6),
+                    radius: 4.0, x: 1.0, y: 2.0)
+    }
+}
+
+struct ProgressBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProgressBarView(actualProgress: 0.4)
+            .progressViewStyle(LinearProgressViewStyle())
+        ProgressBarView(actualProgress: 0.4)
+        ShadowedProgressViews()
+    }
+}
+

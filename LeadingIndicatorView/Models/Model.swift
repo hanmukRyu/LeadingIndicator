@@ -15,7 +15,7 @@ struct leadingIndicator: Codable {
     var currentDate: String
 
     var actualProgress: Float {
-        currentValue/targetValue
+        currentValue / targetValue
     }
 
     var plannedProgress: Float {
